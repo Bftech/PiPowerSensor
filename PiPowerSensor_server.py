@@ -9,11 +9,11 @@ def index():
 def getPulses(periode):
     if periode == "day":
         return "day"
-    else if periode == "hour":
+    elif periode == "hour":
         return "hour"
-    else if periode == "month":
+    elif periode == "month":
         return "month"
-        
+
     return "none";
 
 if __name__ == "__main__":
