@@ -1,7 +1,7 @@
 from flask import Flask, render_template
-import os
+import subprocess
 app = Flask(__name__)
-ip = os.system("hostname -I")
+ip = subprocess.check_output(['hostname', '-I'])
 print ip
 
 data = {}
