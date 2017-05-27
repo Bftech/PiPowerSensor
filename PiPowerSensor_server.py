@@ -1,12 +1,17 @@
 from flask import Flask, render_template
+import os
 app = Flask(__name__)
+ip = os.system("hostname -I")
+
+data["ip"] = ip
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html', data = data)
 
+@app.route("/getPulses")
 @app.route("/getPulses/<periode>")
-def getPulses(periode):
+def getPulses(periode=""):
     if periode == "day":
         return "day"
     elif periode == "hour":
