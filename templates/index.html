@@ -11,26 +11,46 @@
       <div class="row hidden-xs-down"> <!-- Title -->
         <div class="col">
           <h1>PiPowerMeter</h1>
-          <hr>
         </div>
       </div>
+      <hr>
       <div class="row"> <!-- IP -->
         <div class="col">
-          {{ data.ip }}
-          <hr>
+          Ip : {{ data.ip }}
+        </div>
+        <div class="col text-right">
+          <form class="" action="">
+            Actualisation :
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="refreshRate" id="inlineRadio1" value="1"> 1 sec
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="refreshRate" id="inlineRadio2" value="2"> 2 sec
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="refreshRate" id="inlineRadio3" value="5" checked="checked"> 5 sec
+              </label>
+            </div>
+          </form>
         </div>
       </div>
+      <hr>
 
       <div id="meters"> <!-- Meters -->
         <div class="row">
           <div class="col text-center">
-            <h2>00 kWh</h2>
+            <h2><span id="data1"></span> kWh</h2>
             <p>
               Aujourd'hui
             </p>
           </div>
           <div class="col text-center">
-            <h2>00 kWh</h2>
+            <h2><span id="data2"></span> kWh</h2>
             <p>
               Cette semaine
             </p>
@@ -39,13 +59,13 @@
 
         <div class="row">
           <div class="col text-center">
-            <h2>00 kWh</h2>
+            <h2><span id="data3"></span> kWh</h2>
             <p>
               Ce mois-ci
             </p>
           </div>
           <div class="col text-center">
-            <h2>00 kWh</h2>
+            <h2><span id="data4"></span> kWh</h2>
             <p>
               Cette année
             </p>
@@ -57,5 +77,6 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="js/script.js" charset="utf-8"></script>
   </body>
 </html>
