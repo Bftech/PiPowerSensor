@@ -4,6 +4,7 @@ var refreshId;
 
 var db = "PiPowerSensor";
 var loc = "Maman";
+var ip = $( "#ip").text();
 
 $(document).ready(function() {
   updateRefreshRate();
@@ -15,7 +16,7 @@ $("input[name=refreshRate]").change(function() {
 
 function refreshStats() {
   $("#data1").text(i);
-  $.get(':8086/query?db='+ db +'&q=SELECT * FROM pulses ', function(data) {
+  $.get('http://'+ ip +':8086/query?db='+ db +'&q=SELECT * FROM pulses ', function(data) {
     console.log(data);
   });
 
