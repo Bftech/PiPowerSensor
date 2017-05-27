@@ -3,7 +3,7 @@ var i = 0;
 var refreshId;
 
 var db = "PiPowerSensor";
-var location = "Maman"
+var loc = "Maman";
 
 $(document).ready(function() {
   updateRefreshRate();
