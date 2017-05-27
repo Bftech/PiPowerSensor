@@ -8,15 +8,48 @@
   <body>
     <div class="container-fluid">
 
-      <div class="row hidden-xs-down">
+      <div class="row hidden-xs-down"> <!-- Title -->
         <div class="col">
           <h1>PiPowerMeter</h1>
           <hr>
         </div>
       </div>
-      <div class="row">
+      <div class="row"> <!-- IP -->
         <div class="col">
           {{ data.ip }}
+          <hr>
+        </div>
+      </div>
+
+      <div id="meters"> <!-- Meters -->
+        <div class="row">
+          <div class="col text-center">
+            <h2>{{ data.value }}</h2>
+            <p>
+              {{ data.desc }}
+            </p>
+          </div>
+          <div class="col text-center">
+            <h2>{{ data.value }}</h2>
+            <p>
+              {{ data.desc }}
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <h2>{{ data.value }}</h2>
+            <p>
+              {{ data.desc }}
+            </p>
+          </div>
+          <div class="col text-center">
+            <h2>{{ data.value }}</h2>
+            <p>
+              {{ data.desc }}
+            </p>
+          </div>
         </div>
       </div>
 
