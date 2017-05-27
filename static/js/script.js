@@ -2,6 +2,9 @@ var speed = 0;
 var i = 0;
 var refreshId;
 
+var db = "PiPowerSensor";
+var location = "Maman"
+
 $(document).ready(function() {
   updateRefreshRate();
 });
@@ -12,6 +15,9 @@ $("input[name=refreshRate]").change(function() {
 
 function refreshStats() {
   $("#data1").text(i);
+  $.get('http://localhost:8086/query?db='+ db +'&q=SELECT * FROM pulses '), function(data) { 
+    console.log(data);
+  });
 
   i++;
   refreshId = setTimeout(refreshStats, speed * 1000);
