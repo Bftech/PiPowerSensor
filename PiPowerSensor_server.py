@@ -1,12 +1,14 @@
 from flask import Flask, render_template
 import subprocess
-app = Flask(__name__)
-ip = subprocess.check_output(['hostname', '-I'])
-print ip
 
+# INIT
 data = {}
-data['ip'] = ip
+app = Flask(__name__)
+influxDb = "PiPowerSensor"
 
+data['ip'] = subprocess.check_output(['hostname', '-I'])
+
+# WEB
 @app.route("/")
 def index():
     return render_template('index.html', data = data)
@@ -15,11 +17,14 @@ def index():
 @app.route("/getPulses/<periode>")
 def getPulses(periode=""):
     if periode == "day":
+        query = "SELECT * FROM pulses"
         return "day"
     elif periode == "hour":
         return "hour"
     elif periode == "month":
         return "month"
+    else:
+        return "all"
 
     return "none";
 
