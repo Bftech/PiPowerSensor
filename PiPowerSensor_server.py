@@ -3,7 +3,8 @@ import os
 app = Flask(__name__)
 ip = os.system("hostname -I")
 
-data["ip"] = ip
+data = {}
+data['ip'] = ip
 
 @app.route("/")
 def index():
