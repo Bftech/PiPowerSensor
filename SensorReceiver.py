@@ -9,7 +9,7 @@ location = "Maman"
 
 # FUNC
 def insertPulse():
-    query = "curl -i -XPOST 'http://localhost:8086/write?db="+ db +"' --data-binary 'pulses,location="+ location +",pulse=1'"
+    query = "curl -i -XPOST 'http://localhost:8086/write?db="+ db +"' --data-binary 'pulses,location="+ location +" pulse=1'"
     subprocess.call(query)
     print "pulse"
 
