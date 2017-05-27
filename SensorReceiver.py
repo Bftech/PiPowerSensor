@@ -15,9 +15,9 @@ def insertPulse():
 
 # RUN
 while 1:
-    msg = ser.readline()
+    msg = ser.readline().rstrip()
     print "msg : " + msg
-    if msg == "pulse\n":
+    if msg == "pulse":
         insertPulse();
 
     msg = ""
