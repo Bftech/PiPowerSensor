@@ -4,7 +4,7 @@ var refreshId;
 
 var db = "PiPowerSensor";
 var loc = "Maman";
-var ip = $( "#ip").text();
+var ip = $( "#ip").text().trim();
 
 $(document).ready(function() {
   updateRefreshRate();
