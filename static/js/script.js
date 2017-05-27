@@ -15,7 +15,7 @@ $("input[name=refreshRate]").change(function() {
 
 function refreshStats() {
   $("#data1").text(i);
-  $.get('http://localhost:8086/query?db='+ db +'&q=SELECT * FROM pulses ', function(data) {
+  $.get('/query?db='+ db +'&q=SELECT * FROM pulses ', function(data) {
     console.log(data);
   });
 
