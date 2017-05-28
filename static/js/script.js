@@ -17,12 +17,7 @@ $("input[name=refreshRate]").change(function() {
 });
 
 function refreshStats() {
-
-  var instantPower = getInstantPower();
-  console.log(instantPower + "kW");
-
-  $("#data1").text(i);
-  i++;
+  $("#data1").text(getInstantPower(););
   refreshId = setTimeout(refreshStats, speed * 1000);
 }
 
@@ -34,9 +29,9 @@ function getInstantPower() {
     var intervalMS = time1 - time2;
     var intervalSEC = intervalMS / 1000;
 
-    power = 3600 / (intervalSEC * 1000);
+    power = (3600 / (intervalSEC * 1000)) / 1000;
   });
-  return power;
+  return power.toFixed(2);
 }
 
 function updateRefreshRate() {
