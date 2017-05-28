@@ -15,11 +15,13 @@ $("input[name=refreshRate]").change(function() {
 });
 
 function refreshStats() {
-  $("#data1").text(i);
-  $.get('http://'+ ip +':8086/query?db='+ db +'&q=SELECT * FROM pulses ', function(data) {
+  var powerData;
+  $.get('http://'+ ip +':8086/query?db='+ db +'&epoch=ms&q=SELECT LAST(*) FROM pulses WHERE location='+ loc +' LIMIT 2', function(data) {
     console.log(data);
+    powerData = data;
   });
 
+  $("#data1").text(i);
   i++;
   refreshId = setTimeout(refreshStats, speed * 1000);
 }
