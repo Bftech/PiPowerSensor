@@ -17,7 +17,7 @@ $("input[name=refreshRate]").change(function() {
 });
 
 function refreshStats() {
-  $("#data1").text(getInstantPower(););
+  $("#data1").text(getInstantPower());
   refreshId = setTimeout(refreshStats, speed * 1000);
 }
 
