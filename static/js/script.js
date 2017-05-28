@@ -33,7 +33,7 @@ function getInstantPower() {
   });
   return power.toFixed(2);
 }
-
+ 
 function updateRefreshRate() {
   speed = $("input[name=refreshRate]:checked").val();
   clearTimeout(refreshId);
