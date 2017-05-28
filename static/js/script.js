@@ -30,8 +30,8 @@ function getInstantPower() {
     console.log(data);
     powerData = data;
   });
-  var time1 = powerData['results'][0]['series'][0]['values'][0][0]
-  var time2 = powerData['results'][0]['series'][0]['values'][1][0]
+  var time1 = powerData[0]['series'][0]['values'][0][0]
+  var time2 = powerData[0]['series'][0]['values'][1][0]
 
   var intervalMS = time1 - time2;
   var intervalSEC = intervalMS / 1000;
