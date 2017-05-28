@@ -28,8 +28,8 @@ function refreshStats() {
 
 function getInstantPower() {
   $.get('http://'+ ip +':8086/query?db='+ db +'&epoch=ms&q=SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2', function(data) {
-    var time1 = data[0]['series'][0]['values'][0][0]
-    var time2 = data[0]['series'][0]['values'][1][0]
+    var time1 = data['results'][0]['series'][0]['values'][0][0]
+    var time2 = data['results'][0]['series'][0]['values'][1][0]
 
     var intervalMS = time1 - time2;
     var intervalSEC = intervalMS / 1000;
