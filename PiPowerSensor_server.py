@@ -42,13 +42,9 @@ def getPower():
     pulses = list(results)
 
     intervalMS = pulses[0]['time'] - pulses[1]['time']
-    print intervalMS, "ms"
-
     intervalSEC = intervalMS / 1000.0
-    print intervalSEC, "sec"
 
     kW = 3600.0 / impKWH / intervalSEC
-    print kW, "kW"
     return str(kW);
 
 # RUN

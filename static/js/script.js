@@ -38,7 +38,7 @@ function getInstantPower() {
   //   console.log(kW + "kW");
   // });
   $.get('/getPower',function(data) {
-    kW = data;
+    kW = parseInt(data);
   })
   return kW.toFixed(2);
 }
