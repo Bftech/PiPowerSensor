@@ -30,11 +30,9 @@ function getInstantPower() {
     var time1 = data['results'][0]['series'][0]['values'][0][0] //Dernier pulse
     var time2 = data['results'][0]['series'][0]['values'][1][0] //Avant-Dernier pulse
 
-    console.log(time1 + " | " + time2);
-
     var intervalMS = time1 - time2;
-    console.log(intervalMS + "ms");
     var intervalSEC = intervalMS / 1000;
+    console.log(intervalSEC + "sec");
 
     power = (3600 / (intervalSEC * 1000));
   });
