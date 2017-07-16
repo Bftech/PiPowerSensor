@@ -38,7 +38,7 @@ def getPulses(periode=""):
 # kW = 3600/(imp/kWh) / seconds per flash [http://people.ds.cam.ac.uk/ssb22/elec/imp.html]
 @app.route("/getPower")
 def getPower():
-    results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2').get_points()
+    results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2', epoch='ms').get_points()
     pulses = list(results)
 
     intervalMS = pulses[0]['time'] - pulses[1]['time']
