@@ -1,3 +1,4 @@
+// INIT
 var speed = 0;
 var i = 0;
 var refreshId;
@@ -16,9 +17,12 @@ $("input[name=refreshRate]").change(function() {
   updateRefreshRate();
 });
 
-function refreshStats() {
-  $("#data1").text(getInstantPower());
-  refreshId = setTimeout(refreshStats, speed * 1000);
+// DEF
+function updateRefreshRate() {
+  speed = $("input[name=refreshRate]:checked").val();
+  clearTimeout(refreshId);
+  refreshStats();
+  console.log(speed);
 }
 
 function getInstantPower() {
@@ -33,10 +37,11 @@ function getInstantPower() {
   });
   return power.toFixed(2);
 }
- 
-function updateRefreshRate() {
-  speed = $("input[name=refreshRate]:checked").val();
-  clearTimeout(refreshId);
-  refreshStats();
-  console.log(speed);
+
+
+// RUN
+// Render Loop
+function refreshStats() {
+  $("#data1").text(getInstantPower());
+  refreshId = setTimeout(refreshStats, speed * 1000);
 }

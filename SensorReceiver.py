@@ -14,7 +14,7 @@ def insertPulse():
 
 # RUN
 while 1:
-    msg = ser.readline().rstrip()
+    msg = ser.readline().rstrip() # Attente des pulses depuis l'arduino
     print "msg : " + msg
     if msg == "pulse":
         insertPulse();
