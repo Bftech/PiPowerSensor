@@ -33,7 +33,7 @@ function getInstantPower() {
     var intervalMS = time1 - time2;
     var intervalSEC = intervalMS / 1000;
 
-    power = (3600 / (intervalSEC * 1000)) / 1000;
+    power = (3600 / (intervalSEC * 1000));
   });
   return power.toFixed(2);
 }
