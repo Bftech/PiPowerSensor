@@ -1,13 +1,13 @@
 // INIT
 var speed = 0;
-var i = 0;
+var impKWH = 1000 //1000 pulses for 1 kWh or 1 pulse for 1 Wh
 var refreshId;
 
 var db = "PiPowerSensor";
 var loc = "Maman";
 var ip = $( "#ip").text().trim();
 
-var power = 0;
+var kW = 0;
 
 $(document).ready(function() {
   updateRefreshRate();
@@ -25,18 +25,19 @@ function updateRefreshRate() {
   console.log(speed);
 }
 
-function getInstantPower() {
+//  kW = 3600/(imp/kWh) / seconds per flash [http://people.ds.cam.ac.uk/ssb22/elec/imp.html]
+function getInstantPower() { 
   $.get('http://'+ ip +':8086/query?db='+ db +'&epoch=ms&q=SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2', function(data) {
     var time1 = data['results'][0]['series'][0]['values'][0][0] //Dernier pulse
     var time2 = data['results'][0]['series'][0]['values'][1][0] //Avant-Dernier pulse
 
     var intervalMS = time1 - time2;
     var intervalSEC = intervalMS / 1000;
-    console.log(intervalSEC + "sec");
 
-    power = (3600 / (intervalSEC * 1000));
+    kW = 3600 / impKWH / intervalSEC;
+    console.log(kW + "kW");
   });
-  return power.toFixed(2);
+  return kW.toFixed(2);
 }
 
 
