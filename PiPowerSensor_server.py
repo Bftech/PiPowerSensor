@@ -39,9 +39,9 @@ def getPulses(periode=""):
 @app.route("/getPower")
 def getPower():
     results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2').get_points()
-    intervalList = list(results)
+    pulses = list(results)
 
-    intervalMS = (intervalList[0]) - (intervalList[1])
+    intervalMS = pulses[0]['time'] - pulses[1]['time']
     intervalSEC = intervalMS / 1000
 
     kW = 3600 / impKWH / intervalSEC
