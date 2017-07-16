@@ -1,12 +1,18 @@
 from flask import Flask, render_template
+from influxdb import InfluxDBClient
 import subprocess
 
 # INIT
 data = {}
 app = Flask(__name__)
-influxDb = "PiPowerSensor"
 
-data['ip'] = subprocess.check_output(['hostname', '-I'])
+ip = subprocess.check_output(['hostname', '-I'])
+port=8086
+dbname = "PiPowerSensor"
+loc = "Maman";
+InfluxClient = InfluxDBClient(ip, port, "root", "root", dbname)
+
+data['ip'] = ip
 
 # WEB
 @app.route("/")
@@ -27,6 +33,13 @@ def getPulses(periode=""):
         return "all"
 
     return "none";
+
+@app.route("/getPower")
+def getPower():
+    results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2')
+    print results
+    # return kWh;
+    return 1;
 
 # RUN
 if __name__ == "__main__":
