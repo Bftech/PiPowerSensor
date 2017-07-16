@@ -36,7 +36,8 @@ def getPulses(periode=""):
 
 @app.route("/getPower")
 def getPower():
-    results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2')
+    # results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2')
+    results = InfluxClient.query('SELECT * FROM pulses')
     print results
     # return kWh;
     return 1;
