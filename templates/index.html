@@ -10,15 +10,17 @@
 
       <div class="row hidden-xs-down"> <!-- Title -->
         <div class="col">
-          <h1>PiPowerMeter</h1>
+          <h1>PiPowerMeter</h1><small>Ip : <span id="ip">{{ data.ip }}</span></small>
         </div>
       </div>
 
       <hr>
 
       <div class="row"> <!-- HEADER INFOS -->
-        <div class="col"> <!-- IP -->
-          Ip : <span id="ip">{{ data.ip }}</span>
+        <div class="col">
+          <p>
+            Consommation instantanée : <span class="h2"><span id="data1"></span> kW</span>
+          </p>
         </div>
         <div class="col text-right"> <!-- RENDER SPEED -->
           <form class="" action="">

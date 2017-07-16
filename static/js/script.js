@@ -26,7 +26,7 @@ function updateRefreshRate() {
 }
 
 //  kW = 3600/(imp/kWh) / seconds per flash [http://people.ds.cam.ac.uk/ssb22/elec/imp.html]
-function getInstantPower() { 
+function getInstantPower() {
   $.get('http://'+ ip +':8086/query?db='+ db +'&epoch=ms&q=SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2', function(data) {
     var time1 = data['results'][0]['series'][0]['values'][0][0] //Dernier pulse
     var time2 = data['results'][0]['series'][0]['values'][1][0] //Avant-Dernier pulse
@@ -38,6 +38,11 @@ function getInstantPower() {
     console.log(kW + "kW");
   });
   return kW.toFixed(2);
+}
+
+function pulsesToKWH(nbPulses) {
+  var kWh = nbPulses / impKWH;
+  return kWh;
 }
 
 
