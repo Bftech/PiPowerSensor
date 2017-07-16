@@ -39,7 +39,7 @@ def getPower():
     # results = InfluxClient.query('select * from pulses')
     print results
     # return kWh;
-    return 1;
+    return "1";
 
 # RUN
 if __name__ == "__main__":
