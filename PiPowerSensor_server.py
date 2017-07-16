@@ -45,7 +45,7 @@ def getPower():
     print "### ", intervalSEC
 
     kW = 3600 / impKWH / intervalSEC
-    return kW;
+    return str(kW);
 
 # RUN
 if __name__ == "__main__":
