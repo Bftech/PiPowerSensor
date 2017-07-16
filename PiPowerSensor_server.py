@@ -3,6 +3,8 @@ from influxdb import InfluxDBClient
 import subprocess
 
 # INIT
+impKWH = 1000  # 1000 pulses for 1 kWh or 1 pulse for 1 Wh
+
 data = {}
 app = Flask(__name__)
 
@@ -33,13 +35,17 @@ def getPulses(periode=""):
 
     return "none";
 
+# kW = 3600/(imp/kWh) / seconds per flash [http://people.ds.cam.ac.uk/ssb22/elec/imp.html]
 @app.route("/getPower")
 def getPower():
-    results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2')
-    # results = InfluxClient.query('select * from pulses')
-    print results
-    # return kWh;
-    return "1";
+    results = InfluxClient.query('SELECT * FROM pulses WHERE location=\''+ loc +'\' ORDER BY time DESC LIMIT 2').get_points()
+    intervalList = list(results)
+
+    intervalMS = intervalList[0] - intervalList[1]
+    intervalSEC = intervalMS / 1000
+
+    kW = 3600 / impKWH / intervalSEC
+    return kW;
 
 # RUN
 if __name__ == "__main__":

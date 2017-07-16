@@ -37,10 +37,10 @@ function getInstantPower() {
   //   kW = 3600 / impKWH / intervalSEC;
   //   console.log(kW + "kW");
   // });
-  // return kW.toFixed(2);
   $.get('/getPower',function(data) {
-    return data;
+    kW = data;
   })
+  return kW.toFixed(2);
 }
 
 function pulsesToKWH(nbPulses) {
