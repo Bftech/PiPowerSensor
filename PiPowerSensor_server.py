@@ -42,7 +42,7 @@ def getPower():
     pulses = list(results)
 
     intervalSEC = pulses[0]['time'] - pulses[1]['time']
-    print "###" + intervalSEC
+    print "### ", intervalSEC
 
     kW = 3600 / impKWH / intervalSEC
     return kW;
