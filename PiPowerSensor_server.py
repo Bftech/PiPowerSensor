@@ -3,7 +3,7 @@ from influxdb import InfluxDBClient
 import subprocess
 
 # INIT
-impKWH = 1000  # 1000 pulses for 1 kWh or 1 pulse for 1 Wh
+impKWH = 1000.0  # 1000 pulses for 1 kWh or 1 pulse for 1 Wh
 
 data = {}
 app = Flask(__name__)
@@ -44,10 +44,10 @@ def getPower():
     intervalMS = pulses[0]['time'] - pulses[1]['time']
     print intervalMS, "ms"
 
-    intervalSEC = intervalMS / 1000
+    intervalSEC = intervalMS / 1000.0
     print intervalSEC, "sec"
 
-    kW = 3600 / impKWH / intervalSEC
+    kW = 3600.0 / impKWH / intervalSEC
     print kW, "kW"
     return str(kW);
 
